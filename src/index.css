@@ -9,12 +9,18 @@
 }
 
 a {
-  font-size: medium;
+  font-size: large;
   font-weight: bold;
+  color: rgb(255, 255, 255);
 }
+
 a:hover {
   --tw-text-opacity: 1;
   color: rgb(246 195 68 / var(--tw-text-opacity));
+}
+
+.smooth-transition {
+  transition: all 0.3s ease-in-out;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
