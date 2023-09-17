@@ -1,11 +1,13 @@
-import Image_1 from "../assets/images/bg.jpg";
+import Video_1 from "../assets/videos/Sequence.mp4";
 
 type Props = {};
 
 const ImageBox = (props: Props) => {
   return (
-    <div className="flex h-[300px]">
-      <img src={Image_1} alt="cover image" className="object-cover" />
+    <div className="flex absolute z-[-1] top-0 w-full max-[310px]:hidden">
+      <video className="w-full" autoPlay loop muted>
+        <source src={Video_1} type="video/mp4" />
+      </video>
     </div>
   );
 };

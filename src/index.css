@@ -6,17 +6,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: pixel;
+  user-select: none;
 }
 
-a {
-  font-size: large;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
+html {
+  scroll-behavior: smooth;
 }
 
-a:hover {
-  --tw-text-opacity: 1;
-  color: rgb(246 195 68 / var(--tw-text-opacity));
+@font-face {
+  font-family: pixel;
+  src: url(./assets/fonts/2P.ttf);
 }
 
 .smooth-transition {
@@ -32,4 +32,53 @@ a:hover {
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.navbar {
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar-unscrolled {
+  font-size: medium;
+  color: #1e1e28;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-unscrolled:hover {
+  --tw-text-opacity: 1;
+  font-size: x-large;
+  color: rgb(246 195 68 / var(--tw-text-opacity));
+}
+
+.navbar-scrolled {
+  font-size: medium;
+  font-weight: bold;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-scrolled:hover {
+  --tw-text-opacity: 1;
+  font-size: x-large;
+  color: rgb(246 195 68 / var(--tw-text-opacity));
+}
+
+.navbar-icon {
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-icon:hover {
+  transform: scale(1.5, 1.5);
+  color: rgb(246 195 68);
+}
+
+.slidebar-menu {
+}
+
+.section-div {
+  margin-top: 150px;
+}
+
+video {
+  max-width: 100%;
 }

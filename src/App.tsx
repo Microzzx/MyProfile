@@ -5,10 +5,10 @@ import { NavBar, ImageBox } from "./components";
 
 const App: React.FC = () => {
   return (
-    <div className="flex flex-col relative">
-      <ImageBox />
+    <div className="flex flex-col overflow-x-clip relative">
       <NavBar />
-      <div className="px-6 h-[calc(100vh)] bg-[#2B2A2F]">
+      <ImageBox />
+      <div className="flex h-full bg-[#2d2d39] max-[900px]:mt-[80px] mt-[300px]">
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
