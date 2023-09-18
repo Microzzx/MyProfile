@@ -1,19 +1,25 @@
 import Img1 from "../assets/images/landscape2.gif";
+import { useSelector, useDispatch } from "react-redux";
+import { counterSelector } from "../redux/slices/counterSlice";
 
 const Home = () => {
+  const num1 = useSelector(counterSelector);
   return (
-    <div className="flex flex-col mx-[5%]">
-      <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col w-full mx-[5%]">
+      <div className="flex flex-col justify-start">
         <section id="Profile">
-          <div className="section-div flex ">
-            <h1 className="text-[#f6c344] text-4xl font-bold">
-              Welcome to My Profile :D
-            </h1>
+          <div className="section-div">
+            <div className="flex flex-col">
+              <h1 className="text-[#f6c344] text-4xl font-bold mb-5">
+                Welcome to My Profile :D
+              </h1>
+              <p className="">{num1.value}</p>
+            </div>
           </div>
         </section>
 
         <section id="Aboutme">
-          <div className="section-div flex ">
+          <div className="section-div">
             <h1 className="text-[#f6c344] text-4xl font-bold">
               My name is Janekit Prakittawornkul.
             </h1>

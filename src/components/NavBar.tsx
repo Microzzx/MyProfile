@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { BsList, BsXLg } from "react-icons/bs";
 
-type Props = {};
-
-const NavBar = ({}: Props) => {
+const NavBar: React.FC = () => {
   const [dropdownToggle, setDropdownToggle] = useState<boolean>(false);
-  const handleToggle = () => {
+  const handleToggle = (): void => {
     setDropdownToggle(!dropdownToggle);
   };
 
@@ -19,7 +17,7 @@ const NavBar = ({}: Props) => {
       const scrollY = window.scrollY;
 
       if (navbar && navbarIcon) {
-        if (scrollY > 300) {
+        if (scrollY > 0) {
           navbar.classList.remove("bg-[#1e1e28]/0");
           navbar.classList.add("bg-[#1e1e28]");
           navbarIcon.setAttribute("color", "#FFFFFF");
@@ -50,7 +48,7 @@ const NavBar = ({}: Props) => {
   }, []);
 
   return (
-    <nav className="navbar flex w-[100%] h-[100px] justify-center items-center sticky top-0">
+    <nav className="navbar flex w-[100%] h-[100px] justify-center items-center sticky top-0 z-10">
       <div className="flex justify-start ms-[5%]">
         <a
           href="/#Profile"
@@ -93,7 +91,7 @@ const NavBar = ({}: Props) => {
       {/* Slide Menu */}
       <div
         className={`min-[900px]:hidden flex absolute justify-center items-center p-5 
-      w-full h-[45vh] top-[100px] bg-[#20202a] bg-opacity-50 backdrop-blur-sm z-10
+      w-full h-[50vh] top-[100px] bg-[#20202a] bg-opacity-50 backdrop-blur-sm 
       smooth-transition select-none  ${
         dropdownToggle ? "right-0" : "-right-full"
       }`}
