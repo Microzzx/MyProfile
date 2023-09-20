@@ -1,63 +1,85 @@
-import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
-import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import Track from "./songbar_components/Track";
+import Control from "./songbar_components/Control";
+import Volume from "./songbar_components/Volume";
+import Player from "./songbar_components/Player";
+import data from "../assets/data/myChart.json";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setActiveSong,
+  playPause,
+  playerSelector,
+  nextSong,
+  prevSong,
+} from "../redux/slices/playerSlice";
 
-type Props = {};
+const SongBar: React.FC = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setActiveSong(data));
+  }, []);
 
-const SongBar = ({}: Props) => {
-  console.log(window.innerWidth);
+  const { activeSong, isPlaying, currentSongs, currentIndex } =
+    useSelector(playerSelector);
+
+  const [volume, setVolume] = useState(0.2);
+
+  //auto play when song changed
+  useEffect(() => {
+    if (currentSongs.length) dispatch(playPause(true));
+  }, [currentIndex]);
+
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      dispatch(playPause(false));
+    } else {
+      dispatch(playPause(true));
+    }
+  };
+
+  const handleNextSong = () => {
+    dispatch(playPause(false));
+    const index: number = (currentIndex + 1) % currentSongs.length;
+    dispatch(nextSong(index));
+  };
+
+  const handlePrevSong = () => {
+    dispatch(playPause(false));
+    let index: number;
+    if (currentIndex === 0) {
+      index = currentSongs.length - 1;
+    } else {
+      index = currentIndex - 1;
+    }
+    dispatch(nextSong(index));
+  };
+
   return (
     <div className="flex  w-full h-[15vh] items-center bg-black/30 z-[1]">
       <div className="flex items-center justify-center max-[900px]:flex-col max-[900px]:gap-3 w-full ">
-        <div
-          //   className={`${
-          //     isPlaying && isActive ? "animate-[spin_3s_linear_infinite]" : ""
-          //   } hidden sm:block h-16 w-16 mr-4`}
-          className="animate-[spin_3s_linear_infinite] max-[900px]:hidden h-16 w-16"
-        >
-          <img
-            src="https://is4-ssl.mzstatic.com/image/thumb/Music116/v4/72/65/33/726533bf-25f1-094e-d818-3c85167664a0/23UMGIM58540.rgb.jpg/400x400cc.jpg"
-            alt="cover art"
-            className="rounded-full"
-          />
-        </div>
-        <div className="flex flex-col justify-center items-center mx-[3%]">
-          <p className="songbar-text truncate text-white font-bold text-lg mb-2">
-            Now is playing
-          </p>
-          <p className="songbar-text truncate text-gray-300">
-            {"Active Song Test_Music.mp3"}
-          </p>
-        </div>
-        <div className="flex items-center justify-start gap-5 ">
-          {/* {currentSongs?.length && ( */}
-          <MdSkipPrevious
-            color="#FFF"
-            className="cursor-pointer songbar-icon-1"
-            // onClick={handlePrevSong}
-          />
-          {/* )} */}
-          {/* {isPlaying ? ( */}
-          <BsFillPauseFill
-            color="#FFF"
-            // onClick={handlePlayPause}
-            className="cursor-pointer songbar-icon-2"
-          />
-          {/* ) : (
-          <BsFillPlayFill
-            size={45}
-            color="#FFF"
-            onClick={handlePlayPause}
-            className="cursor-pointer"
-          />
-        )} */}
-          {/* {currentSongs?.length && ( */}
-          <MdSkipNext
-            color="#FFF"
-            className="cursor-pointer songbar-icon-1"
-            // onClick={handleNextSong}
-          />
-          {/* )} */}
-        </div>
+        <Track activeSong={activeSong} isPlaying={isPlaying} />
+        <Control
+          isPlaying={isPlaying}
+          currentSongs={currentSongs}
+          handlePlayPause={handlePlayPause}
+          handleNextSong={handleNextSong}
+          handlePrevSong={handlePrevSong}
+        />
+        <Player
+          activeSong={activeSong}
+          isPlaying={isPlaying}
+          volume={volume}
+          onEnded={handleNextSong}
+        />
+        <Volume
+          volume={volume}
+          min="0"
+          max="1"
+          onChange={(event: React.ChangeEvent<HTMLElement>) =>
+            setVolume(event.target.value)
+          }
+          setVolume={setVolume}
+        />
       </div>
     </div>
   );
