@@ -6,7 +6,7 @@ type CounterState = {
 };
 
 const initialState: CounterState = {
-  value: 112,
+  value: 101,
 };
 
 const counterSlice = createSlice({

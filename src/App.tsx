@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <div className="flex flex-col overflow-x-clip relative">
       <NavBar />
       <VideoBox />
-      <div className="flex flex-col mt-[250px] max-[900px]:mt-[5px] smooth-transition">
+      <div className="flex flex-col mt-[0px] lg:mt-[250px] smooth-transition">
         <SongBar />
         <div className="flex flex-col w-full bg-[#2d2d39] ">
           <Routes>

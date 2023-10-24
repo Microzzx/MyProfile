@@ -9,7 +9,7 @@ type VolumeProps = {
   volume: number;
   min: string;
   max: string;
-  onChange: (event: ChangeEvent<HTMLElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   setVolume: (volume: number) => void;
 };
 
@@ -21,22 +21,22 @@ const Volume: React.FC<VolumeProps> = ({
   setVolume,
 }) => {
   return (
-    <div className="hidden lg:flex items-center justify-end">
+    <div className="flex items-center">
       {volume <= 1 && volume > 0.5 && (
         <BsFillVolumeUpFill
-          size={25}
-          color="#FFF"
+          size={20}
+          color="#fff"
           onClick={() => setVolume(0)}
         />
       )}
       {volume <= 0.5 && volume > 0 && (
-        <BsVolumeDownFill size={25} color="#FFF" onClick={() => setVolume(0)} />
+        <BsVolumeDownFill size={20} color="#fff" onClick={() => setVolume(0)} />
       )}
       {volume === 0 && (
         <BsFillVolumeMuteFill
-          size={25}
-          color="#FFF"
-          onClick={() => setVolume(0.5)}
+          size={20}
+          color="#fff"
+          onClick={() => setVolume(0.2)}
         />
       )}
       <input
@@ -46,7 +46,7 @@ const Volume: React.FC<VolumeProps> = ({
         min={min}
         max={max}
         onChange={onChange}
-        className="2xl:w-40 lg:w-32 md:w-32 h-1 ml-2"
+        className="xl:w-20 lg:w-20 h-1.5 ml-2 accent-white "
       />
     </div>
   );

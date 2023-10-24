@@ -19,14 +19,16 @@ const Control: React.FC<ControlProps> = ({
 }) => {
   return (
     <>
-      <div className="flex items-center justify-start gap-5 mr-10">
-        {currentSongs?.length && (
-          <MdSkipPrevious
-            color="#FFF"
-            className="cursor-pointer songbar-icon-1"
-            onClick={handlePrevSong}
-          />
-        )}
+      <div className="flex items-center justify-start gap-5">
+        <div className="hidden lg:flex">
+          {currentSongs?.length && (
+            <MdSkipPrevious
+              color="#FFF"
+              className="cursor-pointer songbar-icon-1"
+              onClick={handlePrevSong}
+            />
+          )}
+        </div>
         {isPlaying ? (
           <BsFillPauseFill
             color="#FFF"
@@ -35,19 +37,20 @@ const Control: React.FC<ControlProps> = ({
           />
         ) : (
           <BsFillPlayFill
-            size={45}
             color="#FFF"
             onClick={handlePlayPause}
-            className="cursor-pointer"
+            className="cursor-pointer songbar-icon-2"
           />
         )}
-        {currentSongs?.length && (
-          <MdSkipNext
-            color="#FFF"
-            className="cursor-pointer songbar-icon-1"
-            onClick={handleNextSong}
-          />
-        )}
+        <div className="hidden lg:flex">
+          {currentSongs?.length && (
+            <MdSkipNext
+              color="#FFF"
+              className="cursor-pointer songbar-icon-1"
+              onClick={handleNextSong}
+            />
+          )}
+        </div>
       </div>
     </>
   );

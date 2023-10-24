@@ -50,14 +50,11 @@ const NavBar: React.FC = () => {
   return (
     <nav className="navbar flex w-[100%] h-[100px] justify-center items-center sticky top-0 z-10">
       <div className="flex justify-start ms-[5%]">
-        <a
-          href="/#Profile"
-          className="navbar-menu min-[900px]:text-2xl text-xl"
-        >
+        <a href="/#Profile" className="navbar-menu lg:text-2xl text-xl">
           My Profile
         </a>
       </div>
-      <ul className="min-[900px]:flex hidden flex-1 justify-end gap-[50px] mr-[5%]">
+      <ul className="lg:flex hidden flex-1 justify-end gap-[50px] mr-[5%]">
         <li>
           <a href="/#Aboutme" className="navbar-menu">
             AboutMe
@@ -79,7 +76,7 @@ const NavBar: React.FC = () => {
           </a>
         </li>
       </ul>
-      <div className="min-[900px]:hidden flex flex-1 justify-end me-[10%]">
+      <div className="lg:hidden flex flex-1 justify-end me-[10%]">
         <button onClick={() => handleToggle()}>
           {dropdownToggle ? (
             <BsXLg size={30} className="navbar-icon" />
@@ -90,7 +87,7 @@ const NavBar: React.FC = () => {
       </div>
       {/* Slide Menu */}
       <div
-        className={`min-[900px]:hidden flex absolute justify-center items-center p-5 
+        className={`lg:hidden flex absolute justify-center items-center p-5 
       w-full h-[50vh] top-[100px] bg-[#20202a] bg-opacity-50 backdrop-blur-sm 
       smooth-transition select-none  ${
         dropdownToggle ? "right-0" : "-right-full"

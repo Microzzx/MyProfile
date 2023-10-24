@@ -1,19 +1,31 @@
 import Img1 from "../assets/images/landscape2.gif";
 import { useSelector, useDispatch } from "react-redux";
 import { counterSelector } from "../redux/slices/counterSlice";
+import { useState } from "react";
 
 const Home = () => {
   const num1 = useSelector(counterSelector);
+  const [input1, setInput1] = useState("");
+
   return (
-    <div className="flex flex-col w-full mx-[5%]">
+    <div className="flex flex-col  mx-[5%]">
       <div className="flex flex-col justify-start">
         <section id="Profile">
           <div className="section-div">
             <div className="flex flex-col">
-              <h1 className="text-[#f6c344] text-4xl font-bold mb-5">
+              <h1 className="text-[#f6c344] text-3xl font-bold mb-10">
                 Welcome to My Profile :D
               </h1>
-              <p className="">{num1.value}</p>
+              <p className="text-gray-300 text-xl typing">
+                I'm a web developer seeking opportunities to enhance my
+                front-end skills.
+              </p>
+
+              <input
+                value={input1}
+                onChange={(e) => setInput1(e.target.value)}
+              />
+              <button onClick={() => console.log(input1)}>Send</button>
             </div>
           </div>
         </section>

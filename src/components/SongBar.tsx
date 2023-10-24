@@ -12,6 +12,10 @@ import {
   nextSong,
   prevSong,
 } from "../redux/slices/playerSlice";
+import {
+  MdOutlineArrowForwardIos,
+  MdOutlineArrowBackIos,
+} from "react-icons/md";
 
 const SongBar: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,7 +26,8 @@ const SongBar: React.FC = () => {
   const { activeSong, isPlaying, currentSongs, currentIndex } =
     useSelector(playerSelector);
 
-  const [volume, setVolume] = useState(0.2);
+  const [toggle, setToggle] = useState(true);
+  const [volume, setVolume] = useState(0); //0.2
 
   //auto play when song changed
   useEffect(() => {
@@ -51,37 +56,79 @@ const SongBar: React.FC = () => {
     } else {
       index = currentIndex - 1;
     }
-    dispatch(nextSong(index));
+    dispatch(prevSong(index));
   };
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
+  useEffect(() => {
+    console.log(toggle);
+  }, [toggle]);
+
   return (
-    <div className="flex  w-full h-[15vh] items-center bg-black/30 z-[1]">
-      <div className="flex items-center justify-center max-[900px]:flex-col max-[900px]:gap-3 w-full ">
-        <Track activeSong={activeSong} isPlaying={isPlaying} />
-        <Control
-          isPlaying={isPlaying}
-          currentSongs={currentSongs}
-          handlePlayPause={handlePlayPause}
-          handleNextSong={handleNextSong}
-          handlePrevSong={handlePrevSong}
-        />
-        <Player
-          activeSong={activeSong}
-          isPlaying={isPlaying}
-          volume={volume}
-          onEnded={handleNextSong}
-        />
-        <Volume
-          volume={volume}
-          min="0"
-          max="1"
-          onChange={(event: React.ChangeEvent<HTMLElement>) =>
-            setVolume(event.target.value)
-          }
-          setVolume={setVolume}
-        />
+    <>
+      <Player
+        activeSong={activeSong}
+        isPlaying={isPlaying}
+        volume={volume}
+        onEnded={handleNextSong}
+      />
+      <div
+        className={`hidden lg:flex ${
+          toggle ? "right-0 " : "right-[-480px]"
+        } items-center w-[500px] h-[100px] bg-black/30 rounded-l-lg smooth-transition bottom-10 fixed`}
+      >
+        <div className="flex items-center justify-center">
+          {toggle ? (
+            <MdOutlineArrowForwardIos
+              className="cursor-pointer songbar-icon-1"
+              onClick={handleToggle}
+            />
+          ) : (
+            <MdOutlineArrowBackIos
+              className="cursor-pointer songbar-icon-1"
+              onClick={handleToggle}
+            />
+          )}
+        </div>
+
+        <div className="flex items-center justify-center ms-5 gap-10">
+          <Track activeSong={activeSong} isPlaying={isPlaying} />
+          <div className="flex flex-col gap-3">
+            <Control
+              isPlaying={isPlaying}
+              currentSongs={currentSongs}
+              handlePlayPause={handlePlayPause}
+              handleNextSong={handleNextSong}
+              handlePrevSong={handlePrevSong}
+            />
+            <Volume
+              volume={volume}
+              min="0"
+              max="1"
+              onChange={(event) => setVolume(parseFloat(event.target.value))}
+              setVolume={setVolume}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* small device */}
+      <div className="flex lg:hidden items-center bottom-5 right-5 fixed">
+        <Track activeSong={activeSong} isPlaying={isPlaying} />
+        <div className="flex absolute items-center justify-center h-16 w-16">
+          <Control
+            isPlaying={isPlaying}
+            currentSongs={currentSongs}
+            handlePlayPause={handlePlayPause}
+            handleNextSong={handleNextSong}
+            handlePrevSong={handlePrevSong}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
