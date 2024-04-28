@@ -50,12 +50,6 @@ h1 {
   transition: all 0.2s ease-in-out;
 }
 
-.navbar-unscrolled:hover {
-  --tw-text-opacity: 1;
-  font-size: x-large;
-  color: rgb(246 195 68 / var(--tw-text-opacity));
-}
-
 .navbar-scrolled {
   font-size: medium;
   font-weight: bold;
@@ -63,19 +57,27 @@ h1 {
   transition: all 0.2s ease-in-out;
 }
 
-.navbar-scrolled:hover {
-  --tw-text-opacity: 1;
-  font-size: x-large;
-  color: rgb(246 195 68 / var(--tw-text-opacity));
-}
-
 .navbar-icon {
   transition: all 0.2s ease-in-out;
 }
 
-.navbar-icon:hover {
-  transform: scale(1.5, 1.5);
-  color: rgb(246 195 68);
+@media (hover: hover) {
+  .navbar-unscrolled:hover {
+    --tw-text-opacity: 1;
+    font-size: x-large;
+    color: rgb(246 195 68 / var(--tw-text-opacity));
+  }
+
+  .navbar-scrolled:hover {
+    --tw-text-opacity: 1;
+    font-size: x-large;
+    color: rgb(246 195 68 / var(--tw-text-opacity));
+  }
+
+  .navbar-icon:hover {
+    transform: scale(1.5, 1.5);
+    color: rgb(246 195 68);
+  }
 }
 
 .section-div {
@@ -94,23 +96,30 @@ video {
   line-height: 1rem;
   transition: all 0.2s ease-in-out;
 }
-.songbar-text:hover {
-  color: rgb(246 195 68);
-}
+
 .songbar-icon-1 {
   font-size: 20px;
   color: rgb(255, 255, 255);
   transition: all 0.2s ease-in-out;
 }
-.songbar-icon-1:hover {
-  color: rgb(246 195 68);
-}
+
 .songbar-icon-2 {
   font-size: 25px;
   transition: all 0.2s ease-in-out;
 }
-.songbar-icon-2:hover {
-  color: rgb(246 195 68);
+
+@media (hover: hover) {
+  .songbar-text:hover {
+    color: rgb(246 195 68);
+  }
+
+  .songbar-icon-1:hover {
+    color: rgb(246 195 68);
+  }
+
+  .songbar-icon-2:hover {
+    color: rgb(246 195 68);
+  }
 }
 
 @media (max-width: 900px) {
@@ -179,4 +188,12 @@ video {
   100% {
     transform: translateY(0px);
   }
+}
+
+.white-icon {
+  color: white;
+}
+
+.black-icon {
+  color: black;
 }

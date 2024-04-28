@@ -63,10 +63,6 @@ const SongBar: React.FC = () => {
     setToggle(!toggle);
   };
 
-  useEffect(() => {
-    console.log(toggle);
-  }, [toggle]);
-
   return (
     <>
       <Player

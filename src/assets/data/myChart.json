@@ -3,26 +3,26 @@
     {
       "index": "0",
       "title": "Furret Theme",
-      "images": "https://drive.google.com/uc?export=view&id=1nhJY0FXGQ3aQqoSWwQyLN6qDBQZ2-EQ_",
-      "url": "https://docs.google.com/uc?export=download&id=1xCZouX6vNgvJDNCU9cBdHpT3_lKkHCek"
+      "images": "../src/assets/data/track/images/0_furret_theme.png",
+      "url": "../src/assets/data/track/songs/0_furret_theme.mp3"
     },
     {
       "index": "1",
       "title": "Azalea Town OST",
-      "images": "https://drive.google.com/uc?export=view&id=1RfOB7P_6ipfYlf1HquCG4wjdOkVeldCN",
-      "url": "https://docs.google.com/uc?export=download&id=1g1R0PStpHn9Bgorz1EgCaKbrN5eS2lEl"
+      "images": "../src/assets/data/track/images/song1.png",
+      "url": "../src/assets/data/track/songs/1_Azalea Town OST.mp3"
     },
     {
       "index": "2",
       "title": "Jubilife City",
-      "images": "https://drive.google.com/uc?export=view&id=1RfOB7P_6ipfYlf1HquCG4wjdOkVeldCN",
-      "url": "https://docs.google.com/uc?export=download&id=1rP4Wc5TrpB-FJQqof26RjQcFFWaiMJYB"
+      "images": "../src/assets/data/track/images/song1.png",
+      "url": "../src/assets/data/track/songs/2_Jubilife City (Night)[Pokémon Diamond Pearl].mp3"
     },
     {
       "index": "3",
       "title": "Andrew Cupid",
-      "images": "https://drive.google.com/uc?export=view&id=1RfOB7P_6ipfYlf1HquCG4wjdOkVeldCN",
-      "url": "https://docs.google.com/uc?export=download&id=1SkcpSvHXWRp9sekkN5YzLJDk5v9Dk4sI"
+      "images": "../src/assets/data/track/images/song1.png",
+      "url": "../src/assets/data/track/songs/3_andrew_cupid.mp3"
     }
   ]
 }

@@ -17,17 +17,17 @@ const Player: React.FC<PlayerProps> = ({
 
   if (ref.current && activeSong) {
     if (isPlaying) {
-      const playPromise = ref.current.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            // Playback started successfully
-          })
-          .catch((error) => {
-            // Auto-play was prevented
-            console.error("Autoplay prevented:", error);
-          });
-      }
+      ref.current.play();
+      // if (playPromise !== undefined) {
+      //   playPromise
+      //     .then(() => {
+      //       // Playback started successfully
+      //     })
+      //     .catch((error) => {
+      //       // Auto-play was prevented
+      //       console.error("Autoplay prevented:", error);
+      //     });
+      // }
     } else {
       ref.current.pause();
     }
@@ -40,7 +40,13 @@ const Player: React.FC<PlayerProps> = ({
   }, [volume]);
 
   return (
-    <audio src={activeSong.url} ref={ref} loop={false} onEnded={onEnded} />
+    <audio
+      crossOrigin="anonymous"
+      src={activeSong.url}
+      ref={ref}
+      loop={false}
+      onEnded={onEnded}
+    />
   );
 };
 
